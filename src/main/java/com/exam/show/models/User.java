@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import org.springframework.data.annotation.Transient;
 
 
 @Entity
@@ -29,13 +28,7 @@ public class User {
 	private String first_name;
 	private String last_name;
 	
-	@Email(message = "Please provide a valid e-mail")
-	@NotEmpty(message = "Please provide an e-mail")
 	private String email;
-	
-	@Column(name = "password")
-	@Transient
-	private String password;
 	
 	private Date createdAt;
 	private Date updatedAt;
@@ -47,20 +40,10 @@ public class User {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="department")
 	private Department department;
-
-
-	@OneToMany(mappedBy="patient", fetch = FetchType.LAZY)
-	private List<Appointment> patient;
-	
-	@OneToMany(mappedBy="doctor", fetch = FetchType.LAZY)
-	private List<Appointment> doctor;
-	
-	
 	
 	@Column(name = "confirmation_token")
 	private String confirmationToken;
-	@Column(name = "enabled")
-	private boolean enabled;
+	
 	
 	public Role getRole() {
 		return role;
@@ -93,26 +76,17 @@ public class User {
 	public void setDoctor(List<Appointment> doctor) {
 		this.doctor = doctor;
 	}
+
+	@OneToMany(mappedBy="patient", fetch = FetchType.LAZY)
+	private List<Appointment> patient;
+	
+	@OneToMany(mappedBy="doctor", fetch = FetchType.LAZY)
+	private List<Appointment> doctor;
+	
 	
 	
 	public User() {
 		
-	}
-
-	public String getConfirmationToken() {
-		return confirmationToken;
-	}
-
-	public void setConfirmationToken(String confirmationToken) {
-		this.confirmationToken = confirmationToken;
-	}
-
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
 	}
 
 	public Long getId() {
