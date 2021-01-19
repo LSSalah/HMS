@@ -34,11 +34,11 @@ public class User {
 	
 	@Column(name = "first_name")
 	@NotEmpty(message = "Please provide your first name")
-	private String first_name;
+	private String firstName;
 	
 	@Column(name = "last_name")
 	@NotEmpty(message = "Please provide your last name")
-	private String last_name;
+	private String lastName;
 	
 	@Column(name = "password")
 	@Transient
@@ -144,21 +144,7 @@ public class User {
 		this.id = id;
 	}
 
-	public String getFirst_name() {
-		return first_name;
-	}
-
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
-	}
-
-	public String getLast_name() {
-		return last_name;
-	}
-
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
-	}
+	
 
 	public String getEmail() {
 		return email;
@@ -193,6 +179,18 @@ public class User {
 	@PreUpdate
 	public void onUpdate() {
 		this.updatedAt = new Date();
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	
