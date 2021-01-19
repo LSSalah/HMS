@@ -3,6 +3,7 @@ package com.exam.show.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import com.exam.show.models.Appointment;
@@ -35,6 +36,10 @@ public class AdminService {
 		return thisAdmin;
 	}
 	
-	
+	public User createAdmin(User user) {
+        String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        user.setPassword(hashed);
+        return userRepo.save(user);
+    }
 	
 }

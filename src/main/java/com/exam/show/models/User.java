@@ -15,6 +15,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.springframework.data.annotation.Transient;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -23,16 +28,38 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
 	
+	
+	@Column(name = "first_name")
+	@NotEmpty(message = "Please provide your first name")
 	private String first_name;
+	
+	@Column(name = "last_name")
+	@NotEmpty(message = "Please provide your last name")
 	private String last_name;
 	
+	@Column(name = "password")
+	@Transient
+	private String password;
+	
+	@Email(message = "Please provide a valid e-mail")
+	@NotEmpty(message = "Please provide an e-mail")
 	private String email;
 	
+	
+	@Column(updatable=false)
+    @DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
 	
+	@Column(name = "enabled")
+	private boolean enabled;
+	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="role")
 	private Role role;
@@ -44,38 +71,6 @@ public class User {
 	@Column(name = "confirmation_token")
 	private String confirmationToken;
 	
-	
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
-
-	public Department getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-
-	public List<Appointment> getPatient() {
-		return patient;
-	}
-
-	public void setPatient(List<Appointment> patient) {
-		this.patient = patient;
-	}
-
-	public List<Appointment> getDoctor() {
-		return doctor;
-	}
-
-	public void setDoctor(List<Appointment> doctor) {
-		this.doctor = doctor;
-	}
 
 	@OneToMany(mappedBy="patient", fetch = FetchType.LAZY)
 	private List<Appointment> patient;
@@ -84,6 +79,58 @@ public class User {
 	private List<Appointment> doctor;
 	
 	
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	public String getConfirmationToken() {
+		return confirmationToken;
+	}
+	
+	public void setConfirmationToken(String confirmationToken) {
+		this.confirmationToken = confirmationToken;
+	}
+	
+	public Role getRole() {
+		return role;
+	}
+	
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	
+	public Department getDepartment() {
+		return department;
+	}
+	
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+	
+	public List<Appointment> getPatient() {
+		return patient;
+	}
+	
+	public void setPatient(List<Appointment> patient) {
+		this.patient = patient;
+	}
+	
+	public List<Appointment> getDoctor() {
+		return doctor;
+	}
+	
+	public void setDoctor(List<Appointment> doctor) {
+		this.doctor = doctor;
+	}
 	
 	public User() {
 		

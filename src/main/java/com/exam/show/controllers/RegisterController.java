@@ -1,7 +1,6 @@
 package com.exam.show.controllers;
 
 import java.util.Map;
-
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.nulabinc.zxcvbn.Strength;
-import com.nulabinc.zxcvbn.Zxcvbn;
 import com.exam.show.models.User;
 import com.exam.show.services.EmailService;
 import com.exam.show.services.UserService;
+import com.nulabinc.zxcvbn.Strength;
+import com.nulabinc.zxcvbn.Zxcvbn;
 
 @Controller
 public class RegisterController {
@@ -68,15 +67,17 @@ public class RegisterController {
 					
 			// Disable user until they click on confirmation link in email
 		    
-			user.setEnabled(false);
-			user.setRole("ROLE_USER");
-		      
 			
 		    // Generate random 36-character string token for confirmation link
 		    user.setConfirmationToken(UUID.randomUUID().toString());
 		        
 		    userService.saveUser(user);
 				
+		    user.setEnabled(false);
+		    
+		    
+		    user.getRole().setRoleName("ROLE_USER");
+		    
 		//	String appUrl = request.getScheme() + "://" + request.getServerName();
 			
 		    String appUrl = "localhost:8080";
