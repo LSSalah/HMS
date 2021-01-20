@@ -1,116 +1,126 @@
 package com.exam.show.models;
 
-import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.springframework.data.annotation.Transient;
 
 
 @Entity
-@Table(name = "appointments")
+@Table(name = "app")
 public class Appointment {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private int id;
 	
-	private String patientName;
+	@Column(name = "name", nullable = false, unique = true)
+	private String name;
+	
+	@Column(name = "email")
+	private String email;
+	
+	@Column(name = "date")
+	private String date;
+	
+	@Column(name = "time")
+	private String time;
+	
+	
+	@Column(name = "description")
 	private String description;
-	private Date date;
-	private Date createdAt;
-	private Date updatedAt;
+
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="patient")
-	private User patient;
+	@Column(name = "regtime")
+	@Transient
+	private String regtime;
+
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="doctor")
-	private User doctor;
-	
-	
-	public Long getId() {
+
+	public String getRegtime() {
+		return regtime;
+	}
+
+
+	public void setRegtime(String regtime) {
+		this.regtime = regtime;
+	}
+
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getPatientName() {
-		return patientName;
+
+	public String getName() {
+		return name;
 	}
 
-	public void setPatientName(String patientName) {
-		this.patientName = patientName;
+
+	public void setName(String name) {
+		this.name = name;
 	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getDate() {
+		return date;
+	}
+
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+
+	public String getTime() {
+		return time;
+	}
+
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
 
 	public String getDescription() {
 		return description;
 	}
 
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public Date getDate() {
-		return date;
-	}
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	public User getPatient() {
-		return patient;
-	}
-
-	public void setPatient(User patient) {
-		this.patient = patient;
-	}
-
-	public User getDoctor() {
-		return doctor;
-	}
-
-	public void setDoctor(User doctor) {
-		this.doctor = doctor;
-	}
-
-	@PrePersist
-	public void onCreate() {
-		this.createdAt = new Date();
+	@Override
+	public String toString() {
+		return "Appointment [id=" + id + ", name=" + name + ", email=" + email + ", date=" + date + ", time=" + time
+				+ ", description=" + description + "]";
 	}
 	
-	@PreUpdate
-	public void onUpdate() {
-		this.updatedAt = new Date();
-	}
+	
 
-	
-	
 }

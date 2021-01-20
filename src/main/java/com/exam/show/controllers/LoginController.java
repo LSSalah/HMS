@@ -1,14 +1,29 @@
 package com.exam.show.controllers;
 
-import org.springframework.stereotype.Controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @Controller
 public class LoginController {
+
+
 	@RequestMapping("/loginPage")
-	public String showHome() {
+	public String showHome()
+	{
 		
 		return "login";
 	}
+
+	
+/*
+	@RequestMapping("/authenticateTheUser")
+	public String shwHome()
+	{
+		
+		return "user/success";
+	}*/
+
+
 }
