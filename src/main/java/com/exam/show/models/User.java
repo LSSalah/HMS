@@ -16,6 +16,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.data.annotation.Transient;
@@ -41,9 +42,9 @@ public class User {
 	private String lastName;
 	
 	@Column(name = "password")
-	@Transient
 	private String password;
-	
+
+
 	@Email(message = "Please provide a valid e-mail")
 	@NotEmpty(message = "Please provide an e-mail")
 	private String email;
@@ -60,9 +61,12 @@ public class User {
 	private boolean enabled;
 	
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="role")
-	private Role role;
+	@Column(name = "authority ")
+	private String role = "ROLE_USER";
+
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name="role")
+//	private Role role;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="department")
@@ -86,6 +90,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+		
 	public boolean isEnabled() {
 		return enabled;
 	}
@@ -100,11 +105,11 @@ public class User {
 		this.confirmationToken = confirmationToken;
 	}
 	
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
-	
-	public void setRole(Role role) {
+
+	public void setRole(String role) {
 		this.role = role;
 	}
 	
@@ -193,5 +198,10 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", enabled=" + enabled + ", confirmationToken=" + confirmationToken
+				+ ", role=" + role + "]";
+	}
 }

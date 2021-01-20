@@ -2,6 +2,7 @@ package com.exam.show.services;
 
 import java.util.List;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,16 @@ public class UserService {
 	public void saveUser(User user) {
 		userRepository.save(user);
 	}
+	
+	public User registerUser(User user) {
+        String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        user.setPassword(hashed);
+        System.out.println("The user password is: " + user.getPassword());
+        return userRepository.save(user);
+    }
+    
+	
+	
 	
 	public List<User> findAll() {
 		

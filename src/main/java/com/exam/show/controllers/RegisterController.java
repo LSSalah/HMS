@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,8 +77,8 @@ public class RegisterController {
 		    user.setEnabled(false);
 		    
 		    
-		    user.getRole().setRoleName("ROLE_USER");
-		    
+//		    user.getRole().setRoleName("ROLE_USER");
+		    user.setRole("ROLE_USER");
 		//	String appUrl = request.getScheme() + "://" + request.getServerName();
 			
 		    String appUrl = "localhost:8080";
@@ -86,7 +87,7 @@ public class RegisterController {
 			SimpleMailMessage registrationEmail = new SimpleMailMessage();
 			registrationEmail.setTo(user.getEmail());
 			registrationEmail.setSubject("Registration Confirmation");
-			registrationEmail.setText("To confirm your e-mail address, please click the link below:\n"
+			registrationEmail.setText("Welcome to HMS , to confirm your e-mail address, please click the link below:\n"
 					+ appUrl + "/confirm?token=" + user.getConfirmationToken());
 			registrationEmail.setFrom("spring.email.auth@gmail.com");
 			
@@ -117,7 +118,7 @@ public class RegisterController {
 	
 	// Process confirmation link
 	@RequestMapping(value="/confirm", method = RequestMethod.POST)
-	public ModelAndView confirmRegistration(ModelAndView modelAndView, BindingResult bindingResult, @RequestParam Map<String, String> requestParams, RedirectAttributes redir) {
+	public ModelAndView confirmRegistration(ModelAndView modelAndView, BindingResult bindingResult, @RequestParam Map<String, String> requestParams, HttpSession session, RedirectAttributes redir) {
 				
 		modelAndView.setViewName("confirm");
 		
@@ -140,8 +141,8 @@ public class RegisterController {
 		User user = userService.findByConfirmationToken(requestParams.get("token"));
 
 		// Set new password
-	//	user.setPassword(bCryptPasswordEncoder.encode(requestParams.get("password")));
-		user.setPassword(requestParams.get("password"));
+		user = userService.registerUser(user);
+		session.setAttribute("userId", user.getId());
 
 		// Set user to enabled
 		user.setEnabled(true);
