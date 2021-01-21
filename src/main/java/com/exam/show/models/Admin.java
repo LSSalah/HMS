@@ -1,6 +1,8 @@
 package com.exam.show.models;
 
+
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +12,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.data.annotation.Transient;
+
 
 @Entity
 @Table(name = "user")
@@ -43,113 +46,109 @@ public class Admin {
 	@Column(name = "confirmation_token")
 	private String confirmationToken;
 
+	@Column(name = "gender")
+	private String gender;
 	
 	
 	@Column(name = "authority")
 	private String role;
-
-
-
-	public int getId() {
-		return id;
+	
+	@Column(name = "lastseen")
+	@Transient
+	private String lastseen;
+	
+	
+	
+	
+	public String getLastseen() {
+		return lastseen;
 	}
 
-
-
-	public void setId(int id) {
-		this.id = id;
+	public void setLastseen(String lastseen) {
+		this.lastseen = lastseen;
 	}
 
-
-
-	public String getEmail() {
-		return email;
+	public String getRole() {
+		return role;
 	}
 
-
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
-
-
-	public String getPassword() {
-		return password;
+	public String getGender() {
+		return gender;
 	}
 
-
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
-
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-
-
-	public String getLastName() {
-		return lastName;
-	}
-
-
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-
-
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-
-
-
+	
 	public String getConfirmationToken() {
 		return confirmationToken;
 	}
-
-
 
 	public void setConfirmationToken(String confirmationToken) {
 		this.confirmationToken = confirmationToken;
 	}
 
 
-
-	public String getRole() {
-		return role;
+	public int getId() {
+		return id;
 	}
 
-
-
-	public void setRole(String role) {
-		this.role = role;
+	public void setId(int id) {
+		this.id = id;
 	}
-	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean value) {
+		this.enabled = value;
+	}
+
 	@Override
 	public String toString() {
 		return "Admin [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", enabled=" + enabled + ", confirmationToken=" + confirmationToken
-				+ ", role=" + role + "]";
+				+ ", gender=" + gender + ", role=" + role + ", lastseen=" + lastseen + "]";
 	}
 
-}
 	
+
+}

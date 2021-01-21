@@ -1,23 +1,24 @@
 package com.exam.show.services;
 
-import java.util.List;
 
-import org.mindrot.jbcrypt.BCrypt;
+
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.exam.show.models.User;
-import com.exam.show.repositories.UserRepo;
-
+import com.exam.show.repositories.UserRepository;
 
 
 @Service("userService")
 public class UserService {
 
-	private UserRepo userRepository;
+	private UserRepository userRepository;
 
 	@Autowired
-	public UserService(UserRepo userRepository) {
+	public UserService(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
 	
@@ -33,16 +34,13 @@ public class UserService {
 		userRepository.save(user);
 	}
 	
-	public User registerUser(User user) {
-        String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
-        user.setPassword(hashed);
-        System.out.println("The user password is: " + user.getPassword());
-        return userRepository.save(user);
-    }
-    
+<<<<<<< HEAD
+	public User findById(Long id) {
+		return userRepository.findById(id).orElse(null);
+	}
 	
-	
-	
+=======
+>>>>>>> 5483a39d893dabd2e5800b262d2368dbed997035
 	public List<User> findAll() {
 		
 		return userRepository.findAll();
