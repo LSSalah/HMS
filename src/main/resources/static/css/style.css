@@ -7311,6 +7311,9 @@ h1, h2, h3, h4, h5,
     color: #fff; }
     @media (min-width: 768px) {
       .ftco-navbar-light .navbar-brand {
+      	padding:0%;
+      	margin:0%;
+      	font-size:225%;
         color: #39345a; } }
   .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
     font-size: 16px;
@@ -7459,7 +7462,7 @@ h1, h2, h3, h4, h5,
     color: #167ce9; }
   .navbar-brand i {
     color: #167ce9;
-    font-size: 24px; }
+    font-size: 33px; }
 
 .hero-wrap {
   width: 100%;

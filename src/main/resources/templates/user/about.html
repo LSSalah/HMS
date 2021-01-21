@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
   xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Hospital Management System</title>
+    <title>HMS - About</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -27,249 +27,66 @@
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
   </head>
-  <style>
-body {
-  padding: 25px;
-  background-color: white;
-  color: black;
-}
-
-.dark-mode {
-  background-color: #343a40;
-  color: white;
-}
-body.dark-theme a {
-  color: #809fff;
-}
-
-body.dark-theme section {
-  color: #809fff;
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-  </style>
-  <body class="dark-theme || light-theme">
+  <body>
     
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand " th:href="@{/user/index}"><i class="flaticon-pharmacy"></i>H<span>M</span>S</a>
+      <a class="navbar-brand" href="index.html"><i class="flaticon-pharmacy"></i>H<span>M</span>S</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
-      
-      
 
       <div class="collapse navbar-collapse" id="ftco-nav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a th:href="@{/user/index}" class="nav-link">Home</a></li>
-          <li class="nav-item"><a th:href="@{/user/about}"  class="nav-link">About</a></li>
+       <ul class="navbar-nav ml-auto">
+          <li class="nav-item "><a th:href="@{/user/index}" class="nav-link">Home</a></li>
+          <li class="nav-item active"><a th:href="@{/user/about}"  class="nav-link">About</a></li>
           <li class="nav-item"><a th:href="@{/user/departments}"  class="nav-link">Departments</a></li>
           <li class="nav-item"><a th:href="@{/user/doctor}"  class="nav-link">Doctors</a></li>
           <li class="nav-item"><a th:href="@{/user/contact}"  class="nav-link">Contact</a></li>
           <li class="nav-item cta"><a  class="nav-link" data-toggle="modal" data-target="#modalAppointment"><span>Make an Appointment</span></a></li>
-       
-      <li class="nav-item ">
+        
+         <li class="nav-item ">
          <form  th:action="@{/logout}"  method="POST">
-			<button type="submit"  class="btn btn-danger mt-2 ml-2">Logout</button>
-			</form>
+					
+	
+			<button type="submit"  class="btn btn-danger mt-2 ml-2">Logout</button>   
+			</form> 
 			</li>
-        </ul>
+			</ul>
       </div>
     </div>
-    <label class="switch">
-  				<input onclick="myFunction()" type="checkbox" checked>
-  				<span class="slider round"></span>
-			</label>
   </nav>
     <!-- END nav -->
     
-    <div class="hero-wrap" style="background-image: url('../images/bg_1.jpg'); background-attachment:fixed;">
+    <div class="hero-wrap" style="background-image: url('../images/bg_6.jpg'); background-attachment:fixed;">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-           <div class="col-md-8 ftco-animate text-center">
-            <h1 class="mb-4">The most valuable thing is your Health</h1>
-            <p>Serving all people through exemplary health care, education, research and community outreach.</p>
+          <div class="col-md-8 ftco-animate text-center">
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>About</span></p>
+            <h1 class="mb-3 bread">About Us</h1>
           </div>
         </div>
       </div>
     </div>
 
-    <section class="ftco-services">
-      <div class="container">
-        <div class="row no-gutters">
-          <div class="col-md-4 ftco-animate py-5 nav-link-wrap">
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link px-4 active" id="v-pills-master-tab" data-toggle="pill" href="#v-pills-master" role="tab" aria-controls="v-pills-master" aria-selected="true"><span class="mr-3 flaticon-cardiogram"></span> Cardiology</a>
-
-              <a class="nav-link px-4" id="v-pills-buffet-tab" data-toggle="pill" href="#v-pills-buffet" role="tab" aria-controls="v-pills-buffet" aria-selected="false"><span class="mr-3 flaticon-neurology"></span> Neurology</a>
-
-              <a class="nav-link px-4" id="v-pills-fitness-tab" data-toggle="pill" href="#v-pills-fitness" role="tab" aria-controls="v-pills-fitness" aria-selected="false"><span class="mr-3 flaticon-stethoscope"></span> Diagnostic</a>
-
-              <a class="nav-link px-4" id="v-pills-reception-tab" data-toggle="pill" href="#v-pills-reception" role="tab" aria-controls="v-pills-reception" aria-selected="false"><span class="mr-3 flaticon-tooth"></span> Dental</a>
-
-              <a class="nav-link px-4" id="v-pills-sea-tab" data-toggle="pill" href="#v-pills-sea" role="tab" aria-controls="v-pills-sea" aria-selected="false"><span class="mr-3 flaticon-vision"></span> Ophthalmology</a>
-
-              <a class="nav-link px-4" id="v-pills-spa-tab" data-toggle="pill" href="#v-pills-spa" role="tab" aria-controls="v-pills-spa" aria-selected="false"><span class="mr-3 flaticon-ambulance"></span> Emergency</a>
-            </div>
+    <section class="ftco-section-2">
+      <div class="container-fluid d-flex">
+        <div class="section-2-blocks-wrapper row no-gutters">
+          <div class="img col-sm-12 col-lg-6" style="background-image: url('../images/about.jpg');">
+            <a href="https://vimeo.com/230418148" class="button popup-vimeo"><span class="ion-ios-play"></span></a>
           </div>
-          <div class="col-md-8 ftco-animate p-4 p-md-5 d-flex align-items-center">
-            
-            <div class="tab-content pl-md-5" id="v-pills-tabContent">
+          <div class="text col-lg-6 ftco-animate">
+            <div class="text-inner align-self-start">
+              
+              <h3>Welcome to Hopsital Management System since 2021 established Far far away.</h3>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
 
-              <div class="tab-pane fade show active py-5" id="v-pills-master" role="tabpanel" aria-labelledby="v-pills-master-tab">
-                <span class="icon mb-3 d-block flaticon-cardiogram"></span>
-                <h2 class="mb-4">Cardiology Department</h2>
-                <p>is a branch of medicine that deals with the disorders of the heart as well as some parts of the circulatory system.</p>
-                <p>The field includes medical diagnosis and treatment of congenital heart defects, coronary artery disease, heart failure, valvular heart disease and electrophysiology.</p>
-                <p><a href="#" class="btn btn-primary">Learn More</a></p>
-              </div>
-
-              <div class="tab-pane fade py-5" id="v-pills-buffet" role="tabpanel" aria-labelledby="v-pills-buffet-tab">
-                <span class="icon mb-3 d-block flaticon-neurology"></span>
-                <h2 class="mb-4">Neurogoly Department</h2>
-                <p>Is a branch of medicine dealing with disorders of the nervous system.</p>
-                <p>Neurology deals with the diagnosis and treatment of all categories of conditions and disease involving the central and peripheral nervous systems (and their subdivisions, the autonomic and somatic nervous systems), including their coverings, blood vessels, and all effector tissue, such as muscle.</p>
-                <p><a href="#" class="btn btn-primary">Learn More</a></p>
-              </div>
-
-              <div class="tab-pane fade py-5" id="v-pills-fitness" role="tabpanel" aria-labelledby="v-pills-fitness-tab">
-                <span class="icon mb-3 d-block flaticon-stethoscope"></span>
-                <h2 class="mb-4">Diagnostic Department</h2>
-                <p>Medical diagnosis is the process of determining which disease or condition explains a person's symptoms and signs.</p>
-                <p>It is most often referred to as diagnosis with the medical context being implicit. The information required for diagnosis is typically collected from a history and physical examination of the person seeking medical care.</p>
-                <p><a href="#" class="btn btn-primary">Learn More</a></p>
-              </div>
-
-              <div class="tab-pane fade py-5" id="v-pills-reception" role="tabpanel" aria-labelledby="v-pills-reception-tab">
-                <span class="icon mb-3 d-block flaticon-tooth"></span>
-                <h2 class="mb-4">Dental Departments</h2>
-                <p> Dentistry is a branch of medicine that consists of the study, diagnosis, prevention, and treatment of diseases, disorders, and conditions of the oral cavity, commonly in the dentition but also the oral mucosa, and of adjacent and related structures and tissues, particularly in the maxillofacial (jaw and facial) area.</p>
-                <p> Although primarily associated with teeth among the general public, the field of dentistry or dental medicine is not limited to teeth but includes other aspects of the craniofacial complex including the temporomandibular joint and other supporting, muscular, lymphatic, nervous, vascular, and anatomical structures.</p>
-                <p><a href="#" class="btn btn-primary">Learn More</a></p>
-              </div>
-
-              <div class="tab-pane fade py-5" id="v-pills-sea" role="tabpanel" aria-labelledby="v-pills-sea-tab">
-                <span class="icon mb-3 d-block flaticon-vision"></span>
-                <h2 class="mb-4">Ophthalmology Departments</h2>
-                <p>is a branch of medicine and surgery which deals with the diagnosis and treatment of eye disorders. An ophthalmologist is a specialist in ophthalmology.The credentials include a degree in medicine, followed by additional four to five years of ophthalmology residency training.</p>
-                <p>Ophthalmology residency training programs may require a one-year pre-residency training in internal medicine, pediatrics, or general surgery. Additional specialty training (or fellowship) may be sought in a particular aspect of eye pathology.</p>
-                <p><a href="#" class="btn btn-primary">Learn More</a></p>
-              </div>
-
-              <div class="tab-pane fade py-5" id="v-pills-spa" role="tabpanel" aria-labelledby="v-pills-spa-tab">
-                <span class="icon mb-3 d-block flaticon-ambulance"></span>
-                <h2 class="mb-4">Emergency Departments</h2>
-                <p>An emergency department (ED), also known as an accident & emergency department (A&E), emergency room (ER), emergency ward (EW) or casualty department, is a medical treatment facility specializing in emergency medicine.</p>
-                <p>The acute care of patients who present without prior appointment; either by their own means or by that of an ambulance. The emergency department is usually found in a hospital or other primary care center.</p>
-                <p><a href="#" class="btn btn-primary">Learn More</a></p>
-              </div>
+              <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
             </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="ftco-section-2 img" style="background-image: url(../images/bg_3.jpg);">
-    	<div class="container">
-    		<div class="row d-md-flex justify-content-end">
-    			<div class="col-md-6">
-    				<div class="row">
-    					<div class="col-md-12">
-    						<a href="#" class="services-wrap ftco-animate">
-    							<div class="icon d-flex justify-content-center align-items-center">
-    								<span class="ion-ios-arrow-back"></span>
-    								<span class="ion-ios-arrow-forward"></span>
-    							</div>
-    							<h2>Laboratory Services</h2>
-    							<p>Tests are carried out on clinical specimens to obtain information about the health of a patient.</p>
-    						<a href="#" class="services-wrap ftco-animate">
-    							<div class="icon d-flex justify-content-center align-items-center">
-    								<span class="ion-ios-arrow-back"></span>
-    								<span class="ion-ios-arrow-forward"></span>
-    							</div>
-    							<h2>General Treatment</h2>
-    							<p> provides definitions for common General treatment (Extras) services. For other private health insurance terms see the Glossary.</p>
-    						</a>
-    						<a href="#" class="services-wrap ftco-animate">
-    							<div class="icon d-flex justify-content-center align-items-center">
-    								<span class="ion-ios-arrow-back"></span>
-    								<span class="ion-ios-arrow-forward"></span>
-    							</div>
-    							<h2>Emergency Service</h2>
-    							<p>Have one or more dedicated emergency telephone numbers reserved for critical emergency calls.</p>
-    						</a>
-    						<a href="#" class="services-wrap ftco-animate">
-    							<div class="icon d-flex justify-content-center align-items-center">
-    								<span class="ion-ios-arrow-back"></span>
-    								<span class="ion-ios-arrow-forward"></span>
-    							</div>
-    							<h2>24/7 Help &amp; Support</h2>
-    							<p>Welcome to our support center. Please refer to our manuals before you contact our helpdesk.</p>
-    						</a>
-    					</div>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
     </section>
     <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(../images/bg_4.jpg);">
     	<div class="container">
@@ -319,12 +136,11 @@ input:checked + .slider:before {
         </div>
     	</div>
     </section>
-
     <section class="ftco-section testimony-section">
       <div class="container">
       	<div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section ftco-animate text-center">
-            <h2 class="mb-4">Testimonials</h2>
+            <h2 class="mb-4">Team</h2>
           </div>
         </div>
         <div class="row">
@@ -391,13 +207,14 @@ input:checked + .slider:before {
         </div>
       </div>
     </section>		
+
 	<section class="ftco-section-parallax">
       <div class="parallax-img d-flex align-items-center">
         <div class="container">
           <div class="row d-flex justify-content-center">
             <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
               <h2>Subcribe to our Newsletter</h2>
-              <p>The newsletter is based on current research findings and stories from around the globe. We respect your privacy. You can always unsubscribe from our newsletter mailing list.</p>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
               <div class="row d-flex justify-content-center mt-5">
                 <div class="col-md-8">
                   <form action="#" class="subscribe-form">
@@ -476,6 +293,10 @@ input:checked + .slider:before {
     </footer>
     
   
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
   <!-- Modal -->
     <div class="modal fade" id="modalAppointment" tabindex="-1" role="dialog" aria-labelledby="modalAppointmentLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -487,8 +308,6 @@ input:checked + .slider:before {
             </button>
           </div>
           <div class="modal-body">
-           
-           
             <form th:action="@{/user/save-app}"
 						 th:object="${app}" method="POST">
 						 
@@ -558,12 +377,6 @@ input:checked + .slider:before {
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
-  <script>
-function myFunction() {
-   var element = document.body;
-   element.classList.toggle("dark-mode");
-}
-</script>
     
   </body>
 </html>
