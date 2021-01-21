@@ -34,13 +34,10 @@ public class UserService {
 		userRepository.save(user);
 	}
 	
-<<<<<<< HEAD
 	public User findById(Long id) {
 		return userRepository.findById(id).orElse(null);
 	}
 	
-=======
->>>>>>> 5483a39d893dabd2e5800b262d2368dbed997035
 	public List<User> findAll() {
 		
 		return userRepository.findAll();
