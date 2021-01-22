@@ -27,90 +27,10 @@
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
   </head>
-  <style>
-body {
-  padding: 25px;
-  background-color: white;
-  color: black;
-}
-
-.dark-mode {
-  background-color: #343a40;
-  color: white;
-}
-body.dark-theme a {
-  color: #809fff;
-}
-
-body.dark-theme section {
-  color: #809fff;
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-  </style>
   <body class="dark-theme || light-theme">
     
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand " th:href="@{/user/index}"><i class="flaticon-pharmacy"></i>H<span>M</span>S</a>
       <a class="navbar-brand" th:href="@{/user/index}"><i class="flaticon-pharmacy"></i><span>H</span>M<span>S</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
@@ -125,20 +45,16 @@ input:checked + .slider:before {
           <li class="nav-item"><a th:href="@{/user/departments}"  class="nav-link">Departments</a></li>
           <li class="nav-item"><a th:href="@{/user/doctor}"  class="nav-link">Doctors</a></li>
           <li class="nav-item"><a th:href="@{/user/contact}"  class="nav-link">Contact</a></li>
-          <li class="nav-item cta"><a  class="nav-link" data-toggle="modal" data-target="#modalAppointment"><span>Make an Appointment</span></a></li>
-       
-      <li class="nav-item ">
-        <form  th:action="@{/logout}"  method="POST">
-		<button type="submit"  class="btn btn-danger mt-2 ml-2">Logout</button>
-	</form>
-	</li>
+          <li class="nav-item cta"><a class="nav-link" data-toggle="modal" data-target="#modalAppointment"><span>Make an Appointment</span></a></li>
+		  <li class="nav-item cta"><a th:href="@{/user/profile}" class="nav-link"><span>My Profile</span></a></li>
+	      <li class="nav-item ">
+	        <form  th:action="@{/logout}"  method="POST">
+			<button type="submit"  class="btn btn-danger mt-2 ml-2">Logout</button>
+		</form>
+		</li>
         </ul>
       </div>
     </div>
-    <label class="switch">
-  				<input onclick="myFunction()" type="checkbox" checked>
-  				<span class="slider round"></span>
-			</label>
   </nav>
     <!-- END nav -->
     
@@ -559,12 +475,6 @@ input:checked + .slider:before {
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
-  <script>
-function myFunction() {
-   var element = document.body;
-   element.classList.toggle("dark-mode");
-}
-</script>
-    
+  
   </body>
 </html>
