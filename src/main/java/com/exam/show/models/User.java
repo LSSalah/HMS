@@ -59,8 +59,7 @@ public class User {
 	
 	
 	
-<<<<<<< HEAD
-=======
+
 	public Long getId() {
 		return id;
 	}
@@ -69,7 +68,6 @@ public class User {
 		this.id = id;
 	}
 
->>>>>>> f69d95e14609bee378bb9f215b53fd61934d0b98
 	public String getLastseen() {
 		return lastseen;
 	}
@@ -105,7 +103,6 @@ public class User {
 	}
 
 
-<<<<<<< HEAD
 	public int getId() {
 		return id;
 	}
@@ -122,7 +119,6 @@ public class User {
 		this.password = password;
 	}
 
-=======
 
 	public String getPassword() {
 		return password;
@@ -132,7 +128,6 @@ public class User {
 		this.password = password;
 	}
 
->>>>>>> f69d95e14609bee378bb9f215b53fd61934d0b98
 	public String getFirstName() {
 		return firstName;
 	}
