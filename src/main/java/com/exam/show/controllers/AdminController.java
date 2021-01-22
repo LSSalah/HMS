@@ -1,10 +1,10 @@
 package com.exam.show.controllers;
 
 
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,14 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.exam.show.models.Admin;
 import com.exam.show.models.Appointment;
-
 import com.exam.show.models.User;
 import com.exam.show.services.AdminServiceImplementation;
 import com.exam.show.services.AppointmentServiceImplementation;
@@ -81,12 +79,11 @@ public class AdminController {
 		         admin.setLastseen(log);
 		         
 		         adminServiceImplementation.save(admin);
-		
-		
-		
+		         String fullName = admin.getFirstName()+" " +admin.getLastName();
+		         model.addAttribute("fullName", fullName);
+		         System.out.println("Three + "+fullName);
 		return "admin/user";
 	}
-
 	@GetMapping("/user-delete/{id}")
 	public String deleteUser(@PathVariable("id") Long id){
 		
@@ -131,17 +128,14 @@ public class AdminController {
 		
 		
 		List<Admin> list=adminServiceImplementation.findByRole("ROLE_DOCTOR");
-		
-		
-		
 		// add to the spring model
+        String fullName = admin.getFirstName()+" " +admin.getLastName();
+        model.addAttribute("fullName", fullName);
 		model.addAttribute("user", list);
-		
 		
 		return "admin/doctor";
 	}
 	
-
 	@GetMapping("/doctor-promote/{id}")
 	public String updateDoctorRole(@PathVariable("id") Long id) {
 		
@@ -205,13 +199,10 @@ public class AdminController {
 		
 		         
 		List<Admin> list=adminServiceImplementation.findByRole("ROLE_ADMIN");
-		
-		
-		
 		// add to the spring model
+        String fullName = admin.getFirstName()+" " +admin.getLastName();
+        model.addAttribute("fullName", fullName);
 		model.addAttribute("user", list);
-		
-		
 		return "admin/admin";
 	}
 	
@@ -244,7 +235,8 @@ public class AdminController {
 		         admin1.setLastseen(log);
 		         
 		         adminServiceImplementation.save(admin1);
-		
+		         String fullName = admin1.getFirstName()+" " +admin1.getLastName();
+		         theModel.addAttribute("fullName", fullName);
 		
 		// create model attribute to bind form data
 		Admin admin = new Admin();
@@ -273,7 +265,6 @@ public class AdminController {
 		
 		adminServiceImplementation.save(admin);
 		
-		
 		// use a redirect to prevent duplicate submissi
 		return "redirect:/admin/user-details";
 	}
@@ -282,7 +273,6 @@ public class AdminController {
 
 	@GetMapping("/add-admin")
 	public String showForm(Model theModel) {
-		
 		// get last seen
 		String username="";
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -312,7 +302,8 @@ public class AdminController {
 		
 		// create model attribute to bind form data
 		Admin admin = new Admin();
-		
+        String fullName = admin1.getFirstName()+" " +admin1.getLastName();
+        theModel.addAttribute("fullName", fullName);
 		theModel.addAttribute("doctor", admin);
 		
 		return "admin/addAdmin";
@@ -371,8 +362,8 @@ public class AdminController {
 		System.out.println(admin);
 		
 		theModel.addAttribute("profile", admin);
-		String adminName = admin.getFirstName() +" " +admin.getLastName();
-		theModel.addAttribute("adminName", adminName);
+        String fullName = admin.getFirstName()+" " +admin.getLastName();
+        theModel.addAttribute("fullName", fullName);
 		
 		return "admin/updateMyProfile";
 	}
@@ -428,7 +419,8 @@ public class AdminController {
 		
 		// add to the spring model
 		model.addAttribute("app", list);
-		
+        String fullName = admin.getFirstName()+" " +admin.getLastName();
+        model.addAttribute("fullName", fullName);
 		
 		return "admin/appointment";
 	}
