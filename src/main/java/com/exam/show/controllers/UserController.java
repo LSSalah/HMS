@@ -133,8 +133,7 @@ public class UserController {
 		return "user/about";
 	}
 	
-<<<<<<< HEAD
-=======
+
 	@GetMapping("/blog-single")
 	public String bs(Model model){
 		
@@ -221,7 +220,6 @@ public class UserController {
 		return "user/blog";
 	}
 	
->>>>>>> f69d95e14609bee378bb9f215b53fd61934d0b98
 	@GetMapping("/contact")
 	public String contact(Model model){
 		
