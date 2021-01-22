@@ -20,7 +20,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	private int id;
+	private Long id;
 	
 	@Column(name = "username", nullable = false, unique = true)
 	@Email(message = "Please provide a valid e-mail")
@@ -103,13 +103,6 @@ public class User {
 	}
 
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getPassword() {
 		return password;
@@ -119,14 +112,6 @@ public class User {
 		this.password = password;
 	}
 
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	public String getFirstName() {
 		return firstName;

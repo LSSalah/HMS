@@ -14,13 +14,6 @@ import com.exam.show.repositories.UserRepository;
 public class AdminServiceImplementation implements AdminService {
 
 	private AdminRepository adminRepository;
-
-	//inject employee dao
-	@Autowired   //Adding bean id @Qualifier
-	public AdminServiceImplementation( AdminRepository obj)
-	{
-		adminRepository=obj;
-
 	private UserRepository userRepository;
 	//inject employee dao
 	@Autowired   //Adding bean id @Qualifier
