@@ -3,6 +3,7 @@ package com.exam.show.services;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,13 @@ public class UserService {
 		userRepository.save(user);
 	}
 	
+<<<<<<< HEAD
+=======
+	public User findById(Long id) {
+		return userRepository.findById(id).orElse(null);
+	}
+	
+>>>>>>> f69d95e14609bee378bb9f215b53fd61934d0b98
 	public List<User> findAll() {
 		
 		return userRepository.findAll();

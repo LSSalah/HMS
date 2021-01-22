@@ -133,6 +133,95 @@ public class UserController {
 		return "user/about";
 	}
 	
+<<<<<<< HEAD
+=======
+	@GetMapping("/blog-single")
+	public String bs(Model model){
+		
+		// get last seen
+		String username="";
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) {
+		   username = ((UserDetails)principal).getUsername();
+		  String Pass = ((UserDetails)principal).getPassword();
+		  System.out.println("One + "+username+"   "+Pass);
+		  
+		  
+		} else {
+		 username = principal.toString();
+		  System.out.println("Two + "+username);
+		}
+		
+		Admin admin = adminServiceImplementation.findByEmail(username);
+				 
+			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+		    Date now = new Date();  
+		    
+		         String log=now.toString();
+		    
+		         admin.setLastseen(log);
+		         
+		         adminServiceImplementation.save(admin);
+		
+		 
+		         
+		 Appointment obj=new Appointment();
+		 
+		 obj.setName(admin.getFirstName()+" "+admin.getLastName());
+		 
+		 obj.setEmail(admin.getEmail());
+			
+		 System.out.println(obj);
+		 
+		 model.addAttribute("app",obj);
+		 
+		return "user/blog-single";
+	}
+	
+	@GetMapping("/blog")
+	public String blog(Model model){
+		
+		// get last seen
+		String username="";
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) {
+		   username = ((UserDetails)principal).getUsername();
+		  String Pass = ((UserDetails)principal).getPassword();
+		  System.out.println("One + "+username+"   "+Pass);
+		  
+		  
+		} else {
+		 username = principal.toString();
+		  System.out.println("Two + "+username);
+		}
+		
+		Admin admin = adminServiceImplementation.findByEmail(username);
+				 
+			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+		    Date now = new Date();  
+		    
+		         String log=now.toString();
+		    
+		         admin.setLastseen(log);
+		         
+		         adminServiceImplementation.save(admin);
+		
+		 
+		         
+		 Appointment obj=new Appointment();
+		 
+		 obj.setName(admin.getFirstName()+" "+admin.getLastName());
+		 
+		 obj.setEmail(admin.getEmail());
+			
+		 System.out.println(obj);
+		 
+		 model.addAttribute("app",obj);
+		
+		return "user/blog";
+	}
+	
+>>>>>>> f69d95e14609bee378bb9f215b53fd61934d0b98
 	@GetMapping("/contact")
 	public String contact(Model model){
 		

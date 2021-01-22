@@ -4,7 +4,10 @@ package com.exam.show.controllers;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+<<<<<<< HEAD
 
+=======
+>>>>>>> f69d95e14609bee378bb9f215b53fd61934d0b98
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,11 +15,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+<<<<<<< HEAD
+=======
+import org.springframework.web.bind.annotation.PathVariable;
+>>>>>>> f69d95e14609bee378bb9f215b53fd61934d0b98
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.exam.show.models.Admin;
 import com.exam.show.models.Appointment;
+<<<<<<< HEAD
+=======
+import com.exam.show.models.User;
+>>>>>>> f69d95e14609bee378bb9f215b53fd61934d0b98
 import com.exam.show.services.AdminServiceImplementation;
 import com.exam.show.services.AppointmentServiceImplementation;
 import com.exam.show.services.UserService;
@@ -82,6 +93,20 @@ public class AdminController {
 		
 		return "admin/user";
 	}
+<<<<<<< HEAD
+=======
+	@GetMapping("/user-delete/{id}")
+	public String deleteUser(@PathVariable("id") Long id){
+		
+		// save the employee
+		//	admin.setId(0);
+			System.out.println("this is working with number : "+id);
+			adminServiceImplementation.deleteUser(id);
+			
+			// use a redirect to prevent duplicate submissions
+			return "redirect:/admin/user-details";
+	}
+>>>>>>> f69d95e14609bee378bb9f215b53fd61934d0b98
 	
 	@RequestMapping("/doctor-details")
 	public String doctorDetails(Model model){
@@ -125,6 +150,40 @@ public class AdminController {
 		return "admin/doctor";
 	}
 	
+<<<<<<< HEAD
+=======
+	@GetMapping("/doctor-promote/{id}")
+	public String updateDoctorRole(@PathVariable("id") Long id) {
+		
+		// save the employee
+	//	admin.setId(0);
+		 User user = (User) userService.findById(id);
+		
+		user.setRole("ROLE_ADMIN");
+		
+		System.out.println(user);
+		
+		userService.saveUser(user);
+		
+		// use a redirect to prevent duplicate submissions
+		return "redirect:/admin/user-details";
+	}
+	
+	
+	
+	@GetMapping("/doctor-delete/{id}")
+	public String deleteDoctor(@PathVariable("id") Long id){
+		
+		// save the employee
+		//	admin.setId(0);
+			System.out.println("this is working with number : "+id);
+			adminServiceImplementation.deleteUser(id);
+			
+			// use a redirect to prevent duplicate submissions
+			return "redirect:/admin/doctor-details";
+	}
+	
+>>>>>>> f69d95e14609bee378bb9f215b53fd61934d0b98
 	@RequestMapping("/admin-details")
 	public String adminDetails(Model model){
 		
@@ -225,16 +284,24 @@ public class AdminController {
 		
 		adminServiceImplementation.save(admin);
 		
+<<<<<<< HEAD
 		// use a redirect to prevent duplicate submissions
 		return "redirect:/admin/userdetails";
+=======
+		// use a redirect to prevent duplicate submissi
+		return "redirect:/admin/user-details";
+>>>>>>> f69d95e14609bee378bb9f215b53fd61934d0b98
 	}
 	
 	
 
 	@GetMapping("/add-admin")
 	public String showForm(Model theModel) {
+<<<<<<< HEAD
 		
 		
+=======
+>>>>>>> f69d95e14609bee378bb9f215b53fd61934d0b98
 		// get last seen
 		String username="";
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -323,6 +390,11 @@ public class AdminController {
 		System.out.println(admin);
 		
 		theModel.addAttribute("profile", admin);
+<<<<<<< HEAD
+=======
+		String adminName = admin.getFirstName() +" " +admin.getLastName();
+		theModel.addAttribute("adminName", adminName);
+>>>>>>> f69d95e14609bee378bb9f215b53fd61934d0b98
 		
 		return "admin/updateMyProfile";
 	}
