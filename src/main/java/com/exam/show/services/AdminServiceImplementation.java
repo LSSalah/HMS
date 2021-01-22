@@ -8,24 +8,19 @@ import org.springframework.stereotype.Service;
 
 import com.exam.show.models.Admin;
 import com.exam.show.repositories.AdminRepository;
-<<<<<<< HEAD
-
-=======
 import com.exam.show.repositories.UserRepository;
->>>>>>> f69d95e14609bee378bb9f215b53fd61934d0b98
 
 @Service
 public class AdminServiceImplementation implements AdminService {
 
 	private AdminRepository adminRepository;
-<<<<<<< HEAD
 
 	//inject employee dao
 	@Autowired   //Adding bean id @Qualifier
 	public AdminServiceImplementation( AdminRepository obj)
 	{
 		adminRepository=obj;
-=======
+
 	private UserRepository userRepository;
 	//inject employee dao
 	@Autowired   //Adding bean id @Qualifier
@@ -34,7 +29,6 @@ public class AdminServiceImplementation implements AdminService {
 		this.adminRepository=obj;
 		this.userRepository = userRepository;
 
->>>>>>> f69d95e14609bee378bb9f215b53fd61934d0b98
 	}
 	
 	@Override
@@ -62,9 +56,7 @@ public class AdminServiceImplementation implements AdminService {
 		
 		return adminRepository.findByRole(user);
 	}
-<<<<<<< HEAD
 
-=======
 	
 	public void deleteUser(Long id) {
 		userRepository.deleteById(id);
@@ -73,6 +65,5 @@ public class AdminServiceImplementation implements AdminService {
 	public void deleteDoctor(Long id) {
 		userRepository.deleteById(id);
 	}
->>>>>>> f69d95e14609bee378bb9f215b53fd61934d0b98
 	
 }
