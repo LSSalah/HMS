@@ -142,8 +142,8 @@
                                             <div class="account-dropdown__footer">
                                             
                                              
-            <form  th:action="@{/logout}"  method="POST">
-	                           <button type="submit" class="btn btn-successbtn btn-lg btn-success">Logout</button> 
+	            						<form  th:action="@{/logout}"  method="POST">
+			                           	<button type="submit" class="btn btn-successbtn btn-lg btn-success">Logout</button> 
                                        </form>
                                            </div>
                                         </div>
@@ -170,9 +170,6 @@
                             </div>
                         </div>
                        
-                                <!-- TOP CAMPAIGN-->
-                               
-                                <!--  END TOP CAMPAIGN-->
                             </div>
                         </div>
                         
@@ -180,45 +177,30 @@
                             <div class="col-md-12">
                                 <!-- DATA TABLE-->
                                 <div class="table-responsive m-b-40">
-                                    <table class="table table-borderless table-data3">
+                                    <table class="table table-borderless table-data3" id="dataTable" >
                                         <thead>
                                             <tr>
-                    <th>Id</th>
-                     	<th>Name</th>
-                      <th>Email</th>
-                      <th>Date</th>
-                      <th>Time</th>
-                         <th>Description</th>
-                       <th>Registration Date</th>
-                   
-                      
-                    </tr>
-                  
+						                   <th>Id</th>
+					                    	<th>Name</th>
+						                     <th>Date</th>
+						                     <th>Time</th>
+					                        <th class="text-left">Description</th>
+						                   </tr>
                                         </thead>
                                         
                                         <tbody>
-                                             	<tr th:each="temp : ${app}">
+                                      	<tr th:each="temp : ${app}">
        	
-  		<td  th:text="${temp.id}" />	
-				<td   th:text="${temp.name}" />	
-				 <td th:text="${temp.email}"/>	
-					<td  th:text="${temp.description}" />	
-				<td th:text="${temp.time}" />
-				<td th:text="${temp.description}" />
-				<td th:text="${temp.regtime}" />
-				
-		</tr>
+								  		<td th:text="${temp.id}" />	
+											<td   th:text="${temp.name}" />	
+											<td  th:text="${temp.date}" />	
+											<td th:text="${temp.time}" />
+											<td class="text-left" th:text="${temp.description}" />
+										</tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <!-- END DATA TABLE-->
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>Copyright © Doctor+ Application. All rights reserved. </p>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -246,7 +228,18 @@
     <script src="../doctor/vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="../doctor/vendor/select2/select2.min.js">
     </script>
+    
+    <!-- Page level plugin JavaScript-->
+    <script src="../vendor/chart.js/Chart.min.js"></script>
+    <script src="../vendor/datatables/jquery.dataTables.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
 
+    <!-- Custom scripts for all pages-->
+    <script src="../vendor/js/sb-admin.min.js"></script>
+
+    <!-- Demo scripts for this page-->
+    <script src="../vendor/js/demo/datatables-demo.js"></script>
+    <script src="../vendor/js/demo/chart-area-demo.js"></script>
     <!-- Main JS-->
     <script src="../doctor/js/main.js"></script>
 
