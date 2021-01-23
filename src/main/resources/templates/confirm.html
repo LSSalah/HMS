@@ -21,17 +21,35 @@
 
 	<link th:href="@{reg/css/style.css}" rel="stylesheet" />
 	<link th:href="@{reg/css/fv.css}" rel="stylesheet" />
+	<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="login/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="login/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="login/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="login/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="login/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="login/css/util.css">
+	<link rel="stylesheet" type="text/css" href="login/css/main.css">
+<!--===============================================================================================-->
 	
 </head>
 
-<body class="gray-bg">
-
-  <div class="middle-box text-center loginscreen animated fadeInDown">
-    <div>
-    
-      <hr />
-      <h4>Set Your Password</h4>
-
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
+      <span class="login100-form-title p-b-55">
+						Set New Password
+					</span>
       <div th:if="${successMessage}" class="alert alert-success"
         role="alert" th:text=${successMessage}></div>
 
@@ -41,26 +59,29 @@
       <div th:if="${invalidToken}" class="alert alert-danger"
         role="alert" th:text=${invalidToken}></div>
 
-      <form th:if="!${invalidToken}" class="m-t" id="passwordForm" role="form" action="#"
+      <form th:if="!${invalidToken}" class="login100-form validate-form" id="passwordForm" role="form" action="#"
        th:object="${setPassword}" th:action="@{/confirm}" method="post">
 
         <input type="hidden" name="token" th:value=${confirmationToken}  >
 
-        <div class="form-group input-group">
-          <span class="input-group-addon">
+        <div class="wrap-input100 validate-input m-b-16">
+          <span class="focus-input100"></span>
+			<span class="symbol-input100">
             <span class="glyphicon glyphicon-lock"></span>
           </span>
           <input name="password" type="password" id="password"  
-            placeholder="Password" class="form-control" required />
+            placeholder="Password" class="input100" required />
+            
           <span class="glyphicon"
             aria-hidden="true"></span>
         </div>
 
-        <div class="form-group input-group has-feedback">
-          <span class="input-group-addon">
+        <div class="wrap-input100 validate-input m-b-16">
+          <span class="focus-input100"></span>
+			<span class="symbol-input100">
             <span class="glyphicon glyphicon-lock"></span>
           </span>
-         <input type="password" class="form-control" id="signup-password-confirm" placeholder="Confirm Password" name="ConfirmPassword" data-fv-notempty="true"
+         <input type="password" class="input100" id="signup-password-confirm" placeholder="Confirm Password" name="ConfirmPassword" data-fv-notempty="true"
                                        data-fv-notempty-message="Please confirm password"
                                        data-fv-identical="true"
                                        data-fv-identical-field="password"
@@ -72,13 +93,14 @@
 
 		
         <button type="submit"
-          class="btn btn-primary block full-width m-b">Save
+          class="login100-form-btn">Save
         </button>
 
       </form>
 
      
     </div>
+  </div>
   </div>
 
   <!-- jQuery-->
