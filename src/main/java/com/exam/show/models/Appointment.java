@@ -23,6 +23,7 @@ public class Appointment {
 	private int id;
 	
 	@Column(name = "name", nullable = false, unique = true)
+	@NotEmpty(message = "Please provide patient name")
 	private String name;
 	
 	@Column(name = "email")
